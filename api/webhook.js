@@ -5,16 +5,17 @@ export const config = {
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxA2d5l8l892mIUKyQGF6UmkV9E29PlCNcM01vL1End3lhFeV5bXRexcjkH7QqeadkyXQ/exec",
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwT6L8adhQMzDY5D40_BJIG9W_UhOPYEDb21XuyqBGado8-D8xbe8EYKhIjAANAuJedKw/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(req.body)
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: "payload=" + encodeURIComponent(JSON.stringify(req.body)),
+          redirect: "follow"
         }
       );
-
-      console.log("GAS response status:", response.status);
     } catch (e) {
       console.error("GAS forwarding error:", e);
     }
