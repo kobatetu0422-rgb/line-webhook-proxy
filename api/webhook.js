@@ -1,5 +1,5 @@
 export const config = {
-  runtime: "nodejs18.x"
+  runtime: "nodejs"
 };
 
 export default async function handler(req, res) {
@@ -20,5 +20,6 @@ export default async function handler(req, res) {
     }
     return res.status(200).send("OK");
   }
+
   return res.status(405).send("Method Not Allowed");
 }
