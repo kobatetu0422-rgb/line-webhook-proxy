@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwT6L8adhQMzDY5D40_BJIG9W_UhOPYEDb21XuyqBGado8-D8xbe8EYKhIjAANAuJedKw/exec",
+        "https://script.google.com/macros/s/AKfycbyA1z0rXrdvHYKAo8EdbBq9_jasQulNW3KH6TkAqgQzZPczUshVQwZ2VCO3dxFkYi8xaQ/exec",
         {
           method: "POST",
           headers: {
