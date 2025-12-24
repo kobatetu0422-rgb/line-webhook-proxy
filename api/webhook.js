@@ -3,22 +3,27 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).send("Method Not Allowed");
+  }
+
   try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyA1z0rXrdvHYKAo8EdbBq9_jasQulNW3KH6TkAqgQzZPczUshVQwZ2VCO3dxFkYi8xaQ/exec",
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzhB-Cd9Jqr-EQioI39MkbVsc91EpcUOuUvx5qcNGdZqWxU3SWGzSTNVIJvXW6Ye6YXOA/exec",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: "payload=TEST_FROM_VERCEL",
+        // ★ LINEから届いた本物のJSONをそのままGASへ渡す
+        body: "payload=" + encodeURIComponent(JSON.stringify(req.body)),
+        redirect: "follow"
       }
     );
-
-    console.log("FETCH STATUS:", response.status);
   } catch (e) {
-    console.error("FETCH ERROR:", e);
+    console.error("GAS forwarding error:", e);
   }
 
-  return res.status(200).send("TEST SENT");
+  // LINEには常に200を返す（Webhook要件）
+  return res.status(200).send("OK");
 }
