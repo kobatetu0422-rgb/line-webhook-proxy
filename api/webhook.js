@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   try {
     await fetch(
-      "https://script.google.com/macros/s/AKfycbzmzmQfSGhrHzv6RPWwBgM8EAzDZKSW8D12hanZzi5g_L62bCdnftOoF4pHqwSS9IUxsw/exec",
+      "https://script.google.com/macros/s/AKfycbxTNMjQVcG-HcH0Ub3Q9xcGhRw_-PKqMP8gkOuJh2CliopA4TAIkvsoV6FSSyBw4MegXw/exec",
       {
         method: "POST",
         headers: {
